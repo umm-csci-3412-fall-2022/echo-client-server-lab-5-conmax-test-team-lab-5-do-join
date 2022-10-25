@@ -18,18 +18,20 @@ public class EchoClient {
       // Connect to the server
       Socket socket = new Socket(server, portNumber);
       OutputStream os = socket.getOutputStream();
-      DataInputStream is = new DataInputStream(socket.getInputStream());
+      InputStream is = socket.getInputStream();
 
 	    int c;
-	    String responseLine;
+	    String responseLine = "";
 
 	    while ((c = System.in.read()) != -1) {
 	        os.write((byte)c);
-		if (c == '\n') {
-	            os.flush();
-	            responseLine = is.readFully();
-		    System.out.println("echo: " + responseLine);
-	        }
+			os.flush();
+
+			responseLine = responseLine + (char)c;
+			if(c == '\n'){
+				System.out.println(responseLine);
+				responseLine = "";
+			}
 	    }
 
 	    os.close();

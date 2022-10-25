@@ -17,16 +17,14 @@ public static final int portNumber = 6013;
         Socket client = sock.accept();
         System.out.println("Got a request!");
         OutputStream os = client.getOutputStream();
-	DataInputStream is = new DataInputStream(client.getInputStream());
+		InputStream is = client.getInputStream();
 
 	    int c;
-	    String responseLine;
+	    //String responseLine;
 
 	    while ((c = is.read()) != -1) {
 	        os.write((byte)c);
-		if (c == '\n') {
-	            os.flush();
-	        }
+			os.flush();
 	    }
 
 	    os.close();
