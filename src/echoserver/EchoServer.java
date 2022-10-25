@@ -27,6 +27,8 @@ public static final int portNumber = 6013;
 			os.flush();
 	    }
 
+		// This could maybe just be client.close() to keep the server from closing completely
+		// After closing connection with the client.
 	    os.close();
 	    is.close();
 	    client.close();
