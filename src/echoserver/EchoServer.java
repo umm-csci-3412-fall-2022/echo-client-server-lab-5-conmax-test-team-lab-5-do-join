@@ -29,10 +29,10 @@ public static final int portNumber = 6013;
 
 		// This could maybe just be client.close() to keep the server from closing completely
 		// After closing connection with the client.
-	    os.close();
-	    is.close();
+		
 	    client.close();
-	    sock.close();
+		System.out.println("Client Disconnected");
+
 	} 
     } catch (Exception e) {
 	    System.err.println("Exception:  " + e);

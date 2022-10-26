@@ -25,18 +25,18 @@ public class EchoClient {
 
 	    while ((c = System.in.read()) != -1) {
 	        os.write((byte)c);
-			os.flush();
-
-			responseLine = responseLine + (char)c;
-			if(c == '\n'){
-				System.out.println(responseLine);
-				responseLine = "";
-			}
+			os.flush();	
+			System.out.write(is.read());	
 	    }
 
-	    os.close();
-	    is.close();
+		// while((c = is.read()) != -1){
+		// 	responseLine = responseLine + (char)c;
+		// }
+
+		System.out.println(responseLine);
+		responseLine = "";
 	    socket.close();
+		
 	} catch (Exception e) {
 	    System.err.println("Exception:  " + e);
     }
