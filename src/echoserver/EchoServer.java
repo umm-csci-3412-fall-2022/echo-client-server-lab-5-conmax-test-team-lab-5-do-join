@@ -17,21 +17,19 @@ public static final int portNumber = 6013;
         Socket client = sock.accept();
         System.out.println("Got a request!");
         OutputStream os = client.getOutputStream();
-		InputStream is = client.getInputStream();
+		    InputStream is = client.getInputStream();
 
 	    int c;
 	    //String responseLine;
 
-	    while ((c = is.read()) != -1) {
-	        os.write((byte)c);
-			os.flush();
-	    }
+      while ((c = is.read()) != -1) {
+          os.write((byte)c);
+          os.flush();
+      }
 
-		// This could maybe just be client.close() to keep the server from closing completely
-		// After closing connection with the client.
-		
+      sock.close();
 	    client.close();
-		System.out.println("Client Disconnected");
+	    System.out.println("Client Disconnected");
 
 	} 
     } catch (Exception e) {
