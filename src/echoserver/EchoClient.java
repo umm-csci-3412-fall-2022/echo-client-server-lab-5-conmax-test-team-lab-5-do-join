@@ -21,20 +21,12 @@ public class EchoClient {
       InputStream is = socket.getInputStream();
 
 	    int c;
-	    String responseLine = "";
 
 	    while ((c = System.in.read()) != -1) {
 	        os.write((byte)c);
 			os.flush();	
 			System.out.write(is.read());	
 	    }
-
-		// while((c = is.read()) != -1){
-		// 	responseLine = responseLine + (char)c;
-		// }
-
-		System.out.println(responseLine);
-		responseLine = "";
 	    socket.close();
 		
 	} catch (Exception e) {
