@@ -21,17 +21,18 @@ public class EchoClient {
       InputStream is = socket.getInputStream();
 
 	    int c;
-
+      // goes through the input and send it to the server and writes what the server sends back
       while ((c = System.in.read()) != -1) {
 	      os.write((byte)c);
 	      os.flush();	
               System.out.write(is.read());
 	}
+      // flush out the last bit of info beofre we shutdown
       os.flush();
       System.out.flush();
+      // We shutdown the connection instead of closing the socket
       socket.shutdownOutput();
-      socket.shutdownInput();
-      //socket.close();	
+      socket.shutdownInput();	
 	} catch (Exception e) {
 	    System.err.println("Exception:  " + e);
     }

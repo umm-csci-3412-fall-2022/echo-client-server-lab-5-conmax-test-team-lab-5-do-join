@@ -17,15 +17,15 @@ public static final int portNumber = 6013;
         Socket client = sock.accept();
         System.out.println("Got a request!");
         OutputStream os = client.getOutputStream();
-		    InputStream is = client.getInputStream();
+        InputStream is = client.getInputStream();
 
-	    int c;
-	    //String responseLine;
-
+	int c;
+      // echos what the client sends back to the client
       while ((c = is.read()) != -1) {
           os.write((byte)c);
           os.flush();
       }
+      //Disconnect from the client
       client.close();
       System.out.println("Client Disconnected");
 
