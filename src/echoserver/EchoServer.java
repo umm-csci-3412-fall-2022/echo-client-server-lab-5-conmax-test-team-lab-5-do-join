@@ -26,10 +26,8 @@ public static final int portNumber = 6013;
           os.write((byte)c);
           os.flush();
       }
-
-      sock.close();
-	    client.close();
-	    System.out.println("Client Disconnected");
+      client.close();
+      System.out.println("Client Disconnected");
 
 	} 
     } catch (Exception e) {

@@ -22,15 +22,16 @@ public class EchoClient {
 
 	    int c;
 
-	    while ((c = System.in.read()) != -1) {
+      while ((c = System.in.read()) != -1) {
 	      os.write((byte)c);
-			  os.flush();	
-        System.out.write(is.read());
-	    }
-
-	    socket.shutdownOutput();
+	      os.flush();	
+              System.out.write(is.read());
+	}
+      os.flush();
+      System.out.flush();
+      socket.shutdownOutput();
       socket.shutdownInput();
-		
+      //socket.close();	
 	} catch (Exception e) {
 	    System.err.println("Exception:  " + e);
     }
